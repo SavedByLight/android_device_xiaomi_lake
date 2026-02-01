@@ -1,7 +1,12 @@
 
-# A/B
+# Configure Virtual A/B
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
+
 # Enable virtual A/B OTA
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
+
+# Configure launch_with_vendor_ramdisk.mk
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 
 # Enable developer GSI keys
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
@@ -9,10 +14,61 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 # Configure emulated_storage.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
+# Enable Fuse Passthrough
+PRODUCT_PROPERTY_OVERRIDES += persist.sys.fuse.passthrough.enable=true
+
+# TWRP in Vendor Boot
+PRODUCT_PROPERTY_OVERRIDES += ro.twrp.vendor_boot=true
+
+# A/B
+AB_OTA_UPDATER := true
+ENABLE_VIRTUAL_AB := true
+TARGET_ENFORCE_AB_OTA_PARTITION_LIST := true
+AB_OTA_PARTITIONS += \
+    apusys \
+    audio_dsp \
+    boot \
+    ccu \
+    dpm \
+    dtbo \
+    gpueb \
+    gz \
+    lk \
+    logo \
+    mcf_ota \
+    mcupm \
+    md1img \
+    mvpu_algo \
+    odm \
+    odm_dlkm \
+    pi_img \
+    preloader_raw \
+    product \
+    scp \
+    spmfw \
+    sspm \
+    system \
+    system_ext \
+    tee \
+    vbmeta \
+    vbmeta_system \
+    vbmeta_vendor \
+    vcp \
+    vendor \
+    vendor_boot \
+    vendor_dlkm \
+    mi_ext
+	
+# Update engine
+PRODUCT_PACKAGES_DEBUG += \
+    update_engine_client
+
 PRODUCT_PACKAGES += \
+    otapreopt_script \
+    cppreopts.sh \
     update_engine \
-    update_engine_sideload \
-    update_verifier
+    update_verifier \
+    update_engine_sideload
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -20,15 +76,10 @@ AB_OTA_POSTINSTALL_CONFIG += \
     FILESYSTEM_TYPE_system=erofs \
     POSTINSTALL_OPTIONAL_system=true
 
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_vendor=true \
-    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
-    FILESYSTEM_TYPE_vendor=erofs \
-    POSTINSTALL_OPTIONAL_vendor=true
-
+# create pl dev
 PRODUCT_PACKAGES += \
-    checkpoint_gc \
-    otapreopt_script
+    create_pl_dev \
+    create_pl_dev.recovery
 
 # API levels
 BOARD_API_LEVEL := 32
