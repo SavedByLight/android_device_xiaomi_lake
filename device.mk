@@ -124,4 +124,4 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/platform/fstab.mt6768:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.mt6768 \
     $(LOCAL_PATH)/prebuilt/platform/fstab.mt6768:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/fstab.mt6768 \
-    $(call find-copy-subdir-files,*,device/xiaomi/prebuilt/lib/modules,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules) \
+    $(call find-copy-subdir-files,*,device/xiaomi/prebuilt/lib/modules,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules)
