@@ -6,7 +6,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
 
 # Configure launch_with_vendor_ramdisk.mk
-#$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 
 # Enable developer GSI keys
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
@@ -82,9 +82,9 @@ PRODUCT_PACKAGES += \
     create_pl_dev.recovery
 
 # API levels
-BOARD_API_LEVEL := 32
+#BOARD_API_LEVEL := 32
 PRODUCT_SHIPPING_API_LEVEL := 32
-PRODUCT_TARGET_VNDK_VERSION := 34
+PRODUCT_TARGET_VNDK_VERSION := 35
 
 # fastbootd
 PRODUCT_PACKAGES += \
@@ -119,3 +119,9 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
+
+# Vendor Boot Platform
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/platform/fstab.mt6768:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.mt6768 \
+    $(LOCAL_PATH)/prebuilt/platform/fstab.mt6768:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/fstab.mt6768 \
+    $(call find-copy-subdir-files,*,device/xiaomi/prebuilt/lib/modules,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules) \
