@@ -69,7 +69,6 @@ BOARD_XIAOMI_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     odm_dlkm \
     product \
     system \
-    system_dlkm \
     system_ext \
     vendor \
     vendor_dlkm
