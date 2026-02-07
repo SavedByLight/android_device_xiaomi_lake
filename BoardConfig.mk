@@ -130,6 +130,7 @@ RECOVERY_SDCARD_ON_DATA := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
 TW_EXTRA_LANGUAGES := true
+TW_USE_LEGACY_BATTERY_SERVICES := true
 
 # Tools
 TW_INCLUDE_FB2PNG := true
@@ -143,12 +144,6 @@ TW_INCLUDE_NTFS_3G := true
 
 # Vendor Modules
 TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/recovery/root/lib/modules)\")
-
-# Status Bar UI
-TW_STATUS_ICONS_ALIGN := center
-TW_CUSTOM_CPU_POS := "50"
-TW_CUSTOM_CLOCK_POS := "300"
-TW_CUSTOM_BATTERY_POS := "750"
 
 # Props
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
