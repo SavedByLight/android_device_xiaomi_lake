@@ -1,3 +1,6 @@
+on fs
+    start vendor.gatekeeper
+
 service vendor.gatekeeper /vendor/bin/hw/android.hardware.gatekeeper-service.beanpod
     class hal
     user root
