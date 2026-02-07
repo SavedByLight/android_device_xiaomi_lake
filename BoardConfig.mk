@@ -145,7 +145,6 @@ TW_INCLUDE_NTFS_3G := true
 TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/recovery/root/lib/modules)\")
 
 # Status Bar UI
-TW_STATUS_ICONS_ALIGN := center
 TW_CUSTOM_CPU_POS := "50"
 TW_CUSTOM_CLOCK_POS := "300"
 TW_CUSTOM_BATTERY_POS := "750"
@@ -160,6 +159,9 @@ TWRP_EVENT_LOGGING := true
 
 # USB
 TW_EXCLUDE_DEFAULT_USB_INIT := true
+
+# Vintf
+PRODUCT_FULL_TREBLE := true
 
 # Version
 TW_DEVICE_VERSION := SavedByLight

@@ -1,0 +1,6 @@
+service vendor.gatekeeper /vendor/bin/hw/android.hardware.gatekeeper-service.beanpod
+    class hal
+    user root
+    group root
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
+    seclabel u:r:recovery:s0
