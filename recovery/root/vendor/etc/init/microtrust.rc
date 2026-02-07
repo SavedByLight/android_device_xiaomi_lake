@@ -1,3 +1,6 @@
+on fs
+    start teei_daemon
+
 # For MTK DRM integration:
 service teei_daemon /vendor/bin/teei_daemon \
     -r 020b0000000000000000000000000000 \
