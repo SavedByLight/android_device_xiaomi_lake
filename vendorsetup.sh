@@ -17,7 +17,7 @@
 FDEVICE="lake"
 if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_DELETE_AROMAFM="1"
-        export PLATFORM_VERSION="16.1.0"
+    export PLATFORM_VERSION="16.1.0"
 	export OF_USE_MAGISKBOOT=1
 	export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1
 	export OF_USE_NEW_MAGISKBOOT=1
@@ -27,16 +27,16 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_USE_BASH_SHELL=1
 	export FOX_USE_NANO_EDITOR=1
 	export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
-        export OF_SCREEN_H=2340
-        export OF_STATUS_H=80
-        export OF_STATUS_INDENT_LEFT=48
-        export OF_STATUS_INDENT_RIGHT=48
+    export OF_SCREEN_H=2340
+    export OF_STATUS_H=80
+    export OF_STATUS_INDENT_LEFT=48
+    export OF_STATUS_INDENT_RIGHT=48
 	export OF_OTA_RES_DECRYPT=1
 	export FOX_USE_TAR_BINARY=1
 	export FOX_USE_ZIP_BINARY=1
-        export OF_MIUI_OTA_VENDOR_BACKUP=1
+    export OF_MIUI_OTA_VENDOR_BACKUP=1
 	export OF_FORCE_MAGISKBOOT_BOOT_PATCH_MIUI=1
-		export TARGET_DEVICE_ALT="lake"
+	export TARGET_DEVICE_ALT="lake"
 	export OF_FBE_METADATA_MOUNT_IGNORE=1
 	export OF_CHECK_OVERWRITE_ATTEMPTS=1
 	export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES=1
@@ -50,6 +50,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_PATCH_AVB20=1
 	export FOX_REMOVE_AAPT=1
 	export FOX_USE_SPECIFIC_MAGISK_ZIP="./magisk/magisk.apk"
+	export OF_USE_LEGACY_BATTERY_SERVICES=1
 	
 	# R11 build vars
 	export FOX_R12=1
@@ -62,6 +63,6 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
   	   export | grep "TW_" >> $FOX_BUILD_LOG_FILE
   	fi
 
-	add_lunch_combo omni_"$FDEVICE"-eng
+	add_lunch_combo twrp_"$FDEVICE"-eng
 fi
 #
