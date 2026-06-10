@@ -20,13 +20,19 @@ TARGET_BOARD_PLATFORM := mt6768
 
 # Display
 TW_THEME := portrait_hdpi
-TARGET_SCREEN_DENSITY := 395
-TARGET_SCREEN_HEIGHT := 2400
-TARGET_SCREEN_WIDTH := 1080
-TW_DEFAULT_BRIGHTNESS := 2047
-TW_MAX_BRIGHTNESS := 4095
+TARGET_SCREEN_DENSITY := 260
+TARGET_SCREEN_HEIGHT := 1640
+TARGET_SCREEN_WIDTH := 720
+TW_DEFAULT_BRIGHTNESS := 300
+TW_MAX_BRIGHTNESS := 600
 TW_FRAMERATE := 120
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+
+# Status Bar UI
+#TW_STATUS_ICONS_ALIGN := center
+TW_CUSTOM_CPU_POS := "50"
+TW_CUSTOM_CLOCK_POS := "300"
+TW_CUSTOM_BATTERY_POS := "750"
 
 # Kernel
 TARGET_KERNEL_ARCH := arm64
@@ -66,7 +72,6 @@ BOARD_XIAOMI_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     odm_dlkm \
     product \
     system \
-    system_dlkm \
     system_ext \
     vendor \
     vendor_dlkm
@@ -100,7 +105,7 @@ TARGET_USES_MKE2FS := true
 TW_INCLUDE_FUSE_EXFAT := true
 TW_INCLUDE_FUSE_NTFS := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
-TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone28/temp"
+TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone28/temp
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.usb0/lun.%d/file
 
 # Verified Boot
@@ -128,7 +133,7 @@ TW_PREPARE_DATA_MEDIA_EARLY := true
 TW_EXCLUDE_APEX := true
 TW_NO_SCREEN_BLANK := true
 RECOVERY_SDCARD_ON_DATA := true
-TW_INPUT_BLACKLIST := "hbtp_vm"
+TW_INPUT_BLACKLIST := hbtp_vm
 TW_USE_TOOLBOX := true
 TW_EXTRA_LANGUAGES := true
 TW_USE_LEGACY_BATTERY_SERVICES := true
@@ -145,12 +150,6 @@ TW_INCLUDE_NTFS_3G := true
 
 # Vendor Modules
 TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/recovery/root/lib/modules)\")
-
-# Status Bar UI
-TW_STATUS_ICONS_ALIGN := center
-TW_CUSTOM_CPU_POS := "50"
-TW_CUSTOM_CLOCK_POS := "300"
-TW_CUSTOM_BATTERY_POS := "750"
 
 # Props
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
