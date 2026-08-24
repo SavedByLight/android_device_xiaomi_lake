@@ -72,6 +72,7 @@ BOARD_XIAOMI_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     odm_dlkm \
     product \
     system \
+    system_dlkm \
     system_ext \
     vendor \
     vendor_dlkm
@@ -150,6 +151,14 @@ TW_INCLUDE_NTFS_3G := true
 
 # Vendor Modules
 TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/recovery/root/lib/modules)\")
+
+# Status Bar UI
+# Adjusted X positions for 1080-wide panel so the long
+# TW_DEVICE_VERSION string no longer collides with the clock.
+TW_STATUS_ICONS_ALIGN := center
+TW_CUSTOM_CPU_POS := "40"
+TW_CUSTOM_CLOCK_POS := "480"
+TW_CUSTOM_BATTERY_POS := "920"
 
 # Props
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
